@@ -14,22 +14,18 @@ namespace S4_HW3.Context
         public StoreContext()
         {
 
-
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             // optionsBuilder.UseSqlServer("");
-
             optionsBuilder.LogTo(Console.WriteLine).UseSqlServer
            (@"Server=(localdb)\mssqllocaldb;Database=Market;Trusted_Connection=True;");
-
             //base.OnConfiguring(optionsBuilder);
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-
             modelBuilder.Entity<Product>(entity =>
             {
                 entity.HasKey(p => p.Id).HasName("product_pkey");
@@ -39,7 +35,6 @@ namespace S4_HW3.Context
                 entity.Property(d => d.Description).HasMaxLength(250);
                 entity.HasMany(e => e.Stores).WithMany(e => e.Products);
                 entity.HasOne(e => e.Category).WithMany(e => e.Products).HasForeignKey(e => e.CategoryId);
-
             });
 
 
@@ -50,18 +45,13 @@ namespace S4_HW3.Context
                 entity.HasIndex(e => e.Name).IsUnique();
                 entity.Property(e => e.Name).IsRequired().HasMaxLength(100);
                 entity.Property(d => d.Description).HasMaxLength(250);
-
-
             });
 
             modelBuilder.Entity<Store>(entity =>
             {
                 entity.HasKey(p => p.Id).HasName("store_pkey");
                 entity.ToTable("Stores");
-
-
             });
-
 
             base.OnModelCreating(modelBuilder);
         }

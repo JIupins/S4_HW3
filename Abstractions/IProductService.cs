@@ -8,7 +8,6 @@ namespace S4_HW3.Abstractions
     {
         public int AddProduct(ProductCreateRequest product);
         public IEnumerable<ProductResponse> GetProducts();
-
         public ProductResponse GetProductById(int id);
         public bool DeleteProduct(int id);
         public bool UpdatePrice(int idProduct, int price);

@@ -12,8 +12,6 @@ namespace S4_HW3.Contracts.Requests
 
         public Product ProductGetEntity()
         {
-
-
             return new Product()
             {
                 Id = Id,

@@ -37,7 +37,6 @@ namespace S4_HW3.Controllers
                 var content = _productService.GetCsv(products);
                 return File(new UTF8Encoding().GetBytes(content), "text/csv", "products.csv");
             }
-
         }
 
         [HttpGet]
@@ -119,6 +118,5 @@ namespace S4_HW3.Controllers
                 return BadRequest();
             }
         }
-
     }
 }
